@@ -41,16 +41,19 @@ namespace BaskentBank
             else
             {
                 conn.Open();
-                NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO \"userinformation\"(tcno,ad,soyad,telefon,cinsiyet,adres,ortgelir,sifre)VALUES('@TC','@AD','@SOYAD','@TEL','@CIN','@ADR','@ORT','@SIF')", conn);       
+                NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO \"userinformation\"(tcno,ad,soyad,telefon,cinsiyet,adres,ortgelir,sifre)VALUES(@TC,@AD,@SOYAD,@TEL,@CIN,@ADR,@ORT,@SIF)", conn);       
                 cmd.Parameters.AddWithValue("@TC",tctext.Text);
                 cmd.Parameters.AddWithValue("@AD",adtext.Text);
                 cmd.Parameters.AddWithValue("@SOYAD", soyadtext.Text);
                 cmd.Parameters.AddWithValue("@TEL", telefontext.Text);
                 cmd.Parameters.AddWithValue("@CIN", cinsiyetcb.GetItemText(cinsiyetcb.SelectedItem));
-                cmd.Parameters.AddWithValue("@ADRES", adtext.Text);
-                cmd.Parameters.AddWithValue("@ORT", adtext.Text);
-                cmd.Parameters.AddWithValue("@SIF", adtext.Text);
+                cmd.Parameters.AddWithValue("@ADR", adrestext.Text);
+                int value = int.Parse(gelirtext.Text);
+                cmd.Parameters.AddWithValue("@ORT", value);
+                cmd.Parameters.AddWithValue("@SIF", sifretext.Text);
                 cmd.ExecuteNonQuery();
+                conn.Close();
+
                
 
 
@@ -81,5 +84,27 @@ namespace BaskentBank
         {
 
         }
+
+        private void gelirtext_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void duzenleb_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void iptalb_Click(object sender, EventArgs e)
+        {
+            adtext.Clear();
+            telefontext.Clear();
+            soyadtext.Clear();
+            adrestext.Clear();
+            tctext.Clear();
+            gelirtext.Clear();
+            
+        }
+
     }
 }

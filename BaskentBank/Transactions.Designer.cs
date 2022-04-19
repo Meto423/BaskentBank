@@ -46,6 +46,8 @@ namespace BaskentBank
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.cinsiyetcb = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.yatırbutton = new System.Windows.Forms.Button();
             this.parayatırhesaptext = new System.Windows.Forms.TextBox();
@@ -71,8 +73,6 @@ namespace BaskentBank
             this.label15 = new System.Windows.Forms.Label();
             this.paracekmiktar = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.cinsiyetcb = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -114,9 +114,10 @@ namespace BaskentBank
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.label7.Location = new System.Drawing.Point(23, 74);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(136, 23);
+            this.label7.Size = new System.Drawing.Size(108, 23);
             this.label7.TabIndex = 46;
-            this.label7.Text = "Hesap Numarası";
+            this.label7.Text = "TC Kimlik No";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // paraçekhesaptext
             // 
@@ -172,6 +173,7 @@ namespace BaskentBank
             this.bakiyetext.Name = "bakiyetext";
             this.bakiyetext.Size = new System.Drawing.Size(180, 31);
             this.bakiyetext.TabIndex = 32;
+            this.bakiyetext.TextChanged += new System.EventHandler(this.bakiyetext_TextChanged);
             // 
             // label1
             // 
@@ -270,6 +272,30 @@ namespace BaskentBank
             this.panel5.Size = new System.Drawing.Size(497, 189);
             this.panel5.TabIndex = 56;
             // 
+            // cinsiyetcb
+            // 
+            this.cinsiyetcb.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cinsiyetcb.FormattingEnabled = true;
+            this.cinsiyetcb.Items.AddRange(new object[] {
+            "Hesaba Yatırma",
+            "Kredi Borcu Ödeme"});
+            this.cinsiyetcb.Location = new System.Drawing.Point(188, 96);
+            this.cinsiyetcb.Name = "cinsiyetcb";
+            this.cinsiyetcb.Size = new System.Drawing.Size(180, 31);
+            this.cinsiyetcb.TabIndex = 54;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.label17.Location = new System.Drawing.Point(11, 101);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(145, 23);
+            this.label17.TabIndex = 53;
+            this.label17.Text = "Para Yatırma Türü";
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -310,9 +336,10 @@ namespace BaskentBank
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.label11.Location = new System.Drawing.Point(19, 58);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(136, 23);
+            this.label11.Size = new System.Drawing.Size(108, 23);
             this.label11.TabIndex = 46;
-            this.label11.Text = "Hesap Numarası";
+            this.label11.Text = "TC Kimlik No";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // label12
             // 
@@ -436,9 +463,9 @@ namespace BaskentBank
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.label4.Location = new System.Drawing.Point(19, 46);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 23);
+            this.label4.Size = new System.Drawing.Size(110, 23);
             this.label4.TabIndex = 46;
-            this.label4.Text = "Gönderen";
+            this.label4.Text = "Gönderen TC";
             // 
             // label5
             // 
@@ -448,9 +475,9 @@ namespace BaskentBank
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.label5.Location = new System.Drawing.Point(23, 102);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(94, 23);
+            this.label5.Size = new System.Drawing.Size(118, 23);
             this.label5.TabIndex = 50;
-            this.label5.Text = "Gönderilen";
+            this.label5.Text = "Gönderilen TC";
             // 
             // gonderilentext
             // 
@@ -514,9 +541,9 @@ namespace BaskentBank
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.label14.Location = new System.Drawing.Point(23, 74);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(136, 23);
+            this.label14.Size = new System.Drawing.Size(108, 23);
             this.label14.TabIndex = 46;
-            this.label14.Text = "Hesap Numarası";
+            this.label14.Text = "TC Kimlik No";
             // 
             // label15
             // 
@@ -550,30 +577,6 @@ namespace BaskentBank
             this.pictureBox1.TabIndex = 59;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.label17.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.label17.Location = new System.Drawing.Point(11, 101);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(145, 23);
-            this.label17.TabIndex = 53;
-            this.label17.Text = "Para Yatırma Türü";
-            // 
-            // cinsiyetcb
-            // 
-            this.cinsiyetcb.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cinsiyetcb.FormattingEnabled = true;
-            this.cinsiyetcb.Items.AddRange(new object[] {
-            "Hesaba Yatırma",
-            "Kredi Borcu Ödeme"});
-            this.cinsiyetcb.Location = new System.Drawing.Point(188, 96);
-            this.cinsiyetcb.Name = "cinsiyetcb";
-            this.cinsiyetcb.Size = new System.Drawing.Size(180, 31);
-            this.cinsiyetcb.TabIndex = 54;
             // 
             // Transactions
             // 
